@@ -19,9 +19,10 @@
 import numpy as np
 from typing import List
 import bittensor as bt
+from CID.protocol import ProfileSynapse
 
 
-def reward(score: float, response: int) -> float:
+def reward(score: float, response: ProfileSynapse) -> float:
     """
     Reward the miner response to the dummy request. This method returns a reward
     value for the miner, which is used to update the miner's score.
@@ -29,14 +30,18 @@ def reward(score: float, response: int) -> float:
     Returns:
     - float: The reward value for the miner.
     """
-    bt.logging.info(f"In rewards, score: {score}, response val: {response}, rewards val: {1.0 if response == score else 0}")
-    return 1.0 if response == score else 0
+    response_val=response.score
+    bt.logging.info(f"In rewards, score: {score}, response val: {response_val}, rewards val: {1.0 if response_val == score else 0}")
+    if response_val == score:
+        return 1.0
+    else:
+        return 0.0
 
 
 def get_rewards(
     self,
     valid_score: float,
-    responses: List[float],
+    responses: List[ProfileSynapse],
 ) -> np.ndarray:
     """
     Returns an array of rewards for the given query and responses.
@@ -51,5 +56,5 @@ def get_rewards(
     # Get all the reward results by iteratively calling your reward() function.
     
     return np.array(
-        [reward(valid_score, response) for response in responses]
+        [reward(valid_score, score) for score in responses]
     )

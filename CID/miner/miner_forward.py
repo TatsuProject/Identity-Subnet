@@ -24,6 +24,6 @@ async def miner_forward(self, synapse: ProfileSynapse) -> ProfileSynapse:
     _no_of_transactions = synapse.no_of_transactions
     
     #calculate score
-    score = scoring.calculate_score(_public_repos, _created_at, _total_commits, _eth_balance, _tao_balance, _tao_staked, _no_of_transactions)
-    synapse.score = score
+    _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked)
+    synapse.score = _score
     return synapse

@@ -27,7 +27,7 @@ import CID
 # import base miner class which takes care of most of the boilerplate
 from CID.base.miner import BaseMinerNeuron
 import CID.miner
-
+from CID.miner import scoring as scoring
 
 class Miner(BaseMinerNeuron):
     """
@@ -39,7 +39,9 @@ class Miner(BaseMinerNeuron):
     """
 
     def __init__(self, config=None):
+        bt.logging.debug("Started")
         super(Miner, self).__init__(config=config)
+        bt.logging.debug("Init done")
 
         # TODO(developer): Anything specific to your use case you can do here
 
@@ -51,10 +53,10 @@ class Miner(BaseMinerNeuron):
         This method should be replaced with actual logic relevant to the miner's purpose.
 
         Args:
-            synapse (cid.protocol.Dummy): The synapse object containing the 'dummy_input' data.
+            synapse (CID.protocol.Dummy): The synapse object containing the 'dummy_input' data.
 
         Returns:
-            cid.protocol.Dummy: The synapse object with the 'dummy_output' field set to twice the 'dummy_input' value.
+            CID.protocol.Dummy: The synapse object with the 'dummy_output' field set to twice the 'dummy_input' value.
 
         The 'forward' function is a placeholder and should be overridden with logic that is appropriate for
         the miner's intended operation. This method demonstrates a basic transformation of input data.
@@ -62,14 +64,15 @@ class Miner(BaseMinerNeuron):
         # TODO(developer): Replace with actual implementation logic.
          #get data from synapse
         _public_repos = synapse.public_repos
+        bt.logging.debug(f"Data recieved from Validator: {_public_repos}")
         _created_at = synapse.created_at
         _total_commits = synapse.total_commits
         _eth_balance = synapse.eth_balance
         _tao_balance = synapse.tao_balance
         _tao_staked = synapse.tao_staked
         _no_of_transactions = synapse.no_of_transactions
-        score = CID.miner.scoring.calculate_score(_public_repos, _created_at, _total_commits, _eth_balance, _tao_balance, _tao_staked, _no_of_transactions)
-        synapse.score = score
+        _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked)
+        synapse.score = _score
         return synapse
 
     async def blacklist(
@@ -84,7 +87,7 @@ class Miner(BaseMinerNeuron):
         requests before they are deserialized to avoid wasting resources on requests that will be ignored.
 
         Args:
-            synapse (cid.protocol.Dummy): A synapse object constructed from the headers of the incoming request.
+            synapse (CID.protocol.Dummy): A synapse object constructed from the headers of the incoming request.
 
         Returns:
             Tuple[bool, str]: A tuple containing a boolean indicating whether the synapse's hotkey is blacklisted,
@@ -142,7 +145,7 @@ class Miner(BaseMinerNeuron):
         This implementation assigns priority to incoming requests based on the calling entity's stake in the metagraph.
 
         Args:
-            synapse (cid.protocol.Dummy): The synapse object that contains metadata about the incoming request.
+            synapse (CID.protocol.Dummy): The synapse object that contains metadata about the incoming request.
 
         Returns:
             float: A priority score derived from the stake of the calling entity.

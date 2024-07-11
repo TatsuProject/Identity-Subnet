@@ -127,8 +127,8 @@ async def forward(self):
             "UID",
             "IP:Port",
             "Status Code",
-            "Selected Answer",
-            "Is Answer Correct",
+            "Profile Score",
+            "Is miner correct?",
         ]
     ]
     for i, response in enumerate(responses):
@@ -152,4 +152,5 @@ async def forward(self):
         )
     )
     # Update the scores based on the rewards. You may want to define your own update_scores function for custom behavior.
+
     self.update_scores(is_correct_answer, miner_uids)

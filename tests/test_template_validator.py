@@ -23,10 +23,10 @@ import bittensor as bt
 import torch
 
 from neurons.validator import Validator
-from cid.base.validator import BaseValidatorNeuron
-from cid.protocol import Dummy
-from cid.utils.uids import get_random_uids
-from cid.validator.reward import get_rewards
+from CID.base.validator import BaseValidatorNeuron
+from CID.protocol import Dummy
+from CID.utils.uids import get_random_uids
+from CID.validator.reward import get_rewards
 
 
 class TemplateValidatorNeuronTestCase(unittest.TestCase):

@@ -52,6 +52,7 @@ def calculate_repo_points(repos) -> float:
 
 
 def crypto_score(balance) -> float:
+  score = 0
   if balance > 1:
       score += 0.5
   else:
