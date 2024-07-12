@@ -89,89 +89,96 @@ class ProfileSynapse(bt.Synapse):
         """
         return self
 
-    # id: str = pydantic.Field(
-    #     ...,
-    #     title="ID",
-    #     description="A unique identifier for the task.",
-    #     allow_mutation=False,
-    # )
+    id: str = pydantic.Field(
+        ...,
+        title="ID",
+        description="A unique identifier for the task.",
+        allow_mutation=False,
+    )
 
-    # type: str = pydantic.Field(
-    #     ...,
-    #     title="Type",
-    #     description="A string that specifies the type of the task.",
-    #     allow_mutation=False,
-    # )
+    type: str = pydantic.Field(
+        ...,
+        title="Type",
+        description="A string that specifies the type of the task.",
+        allow_mutation=False,
+    )
 
-    # public_repos: int = pydantic.Field(
-    #     ...,
-    #     title="public_repos",
-    #     description="A int that captures the public repos of the user.",
-    #     allow_mutation=False,
-    # )
+    public_repos: int = pydantic.Field(
+        ...,
+        title="public_repos",
+        description="A int that captures the public repos of the user.",
+        allow_mutation=False,
+    )
 
-    # created_at: datetime = pydantic.Field(
-    #     ...,
-    #     title="created_at",
-    #     description="A datetime that captures the date of account creation.",
-    #     allow_mutation=False,
-    #     arbitrary_types_allowed=True
-    # )
+    created_at: datetime = pydantic.Field(
+        ...,
+        title="created_at",
+        description="A datetime that captures the date of account creation.",
+        allow_mutation=False,
+        arbitrary_types_allowed=True
+    )
 
-    # total_commits: int = pydantic.Field(
-    #     ...,
-    #     title="total_commits",
-    #     description="A int that captures the total commits of the user.",
-    #     allow_mutation=False,
-    # )
+    total_commits: int = pydantic.Field(
+        ...,
+        title="total_commits",
+        description="A int that captures the total commits of the user.",
+        allow_mutation=False,
+    )
 
-    # eth_balance: float = pydantic.Field(
-    #     ...,
-    #     title="eth_balance",
-    #     description="A int that captures the eth balance of the user.",
-    #     allow_mutation=False,
-    # )
+    eth_balance: float = pydantic.Field(
+        ...,
+        title="eth_balance",
+        description="A int that captures the eth balance of the user.",
+        allow_mutation=False,
+    )
 
-    # eth_nft_balance: int = pydantic.Field(
-    #     ...,
-    #     title="eth_nft_balance",
-    #     description="A count of all nfts held by the user",
-    #     allow_mutation=False,
-    # )
+    eth_nft_balance: int = pydantic.Field(
+        ...,
+        title="eth_nft_balance",
+        description="A count of all nfts held by the user",
+        allow_mutation=False,
+    )
     
-    # tao_balance: float = pydantic.Field(
-    #     ...,
-    #     title="tao_balance",
-    #     description="A int that captures the tao balance of the user.",
-    #     allow_mutation=False,
-    # )
+    tao_balance: float = pydantic.Field(
+        ...,
+        title="tao_balance",
+        description="A int that captures the tao balance of the user.",
+        allow_mutation=False,
+    )
     
-    # tao_staked: float = pydantic.Field(
-    #     ...,
-    #     title="tao_staked",
-    #     description="A int that captures the tao staked of the user.",
-    #     allow_mutation=False,
-    # )
+    tao_staked: float = pydantic.Field(
+        ...,
+        title="tao_staked",
+        description="A int that captures the tao staked of the user.",
+        allow_mutation=False,
+    )
 
-    # no_of_transactions: int = pydantic.Field(
-    #     ...,
-    #     title="no_of_transactions",
-    #     description="A int that captures the no of transactions of the user.",
-    #     allow_mutation=False,
-    # )
+    no_of_transactions: int = pydantic.Field(
+        ...,
+        title="no_of_transactions",
+        description="A int that captures the no of transactions of the user.",
+        allow_mutation=False,
+    )
 
-    # is_linkedin_email_verified: bool = pydantic.Field(
-    #     "",
-    #     title="is_linkedin_email_verified",
-    #     description="A bool that returns true if the linkedin email is verifed"
-    # )
+    is_linkedin_email_verified: bool = pydantic.Field(
+        "",
+        title="is_linkedin_email_verified",
+        description="A bool that returns true if the linkedin email is verifed"
+    )
 
-    # score: float = pydantic.Field(
-    #     "",
-    #     title="score",
-    #     description="A string that captures the score to the profile.",
-    #     allow_mutation=True,
-    # )
+    score: float = pydantic.Field(
+        "",
+        title="score",
+        description="A string that captures the score to the profile.",
+        allow_mutation=True,
+    )
+
+    required_hash_fields: List[str] = pydantic.Field(
+        ["id","type","public_repos","created_at","total_commits","eth_balance","eth_nft_balance","tao_balance","tao_staked","no_of_transactions","is_linkedin_email_verified"],
+        title="Required Hash Fields",
+        description="A list of fields that are required for the hash.",
+        allow_mutation=False,
+    )
 
     def __str__(self) -> str:
         """

@@ -29,6 +29,7 @@ from CID.validator.reward import get_rewards
 from CID.utils.uids import get_random_uids
 from CID.protocol import ProfileSynapse
 from datetime import datetime,time
+from time import sleep
 
 fake = Faker()
 
@@ -162,3 +163,4 @@ async def forward(self):
     # Update the scores based on the rewards. You may want to define your own update_scores function for custom behavior.
 
     self.update_scores(miner_rewards, miner_uids)
+    sleep(5)

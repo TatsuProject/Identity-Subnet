@@ -59,13 +59,13 @@ def crypto_score(balance) -> float:
       score = balance/2
   return score
 
-def transaction_score(transactions) -> (float):
+def transaction_score(transactions) -> float:
   if transactions <= 5:
     return 0.1 * transactions
   else:
     return 0.5
 
-def staked_score(staked) -> (float):
+def staked_score(staked) -> float:
   if staked <= 1:
     return 0.1
   elif staked <= 10:
@@ -77,17 +77,17 @@ def staked_score(staked) -> (float):
   else:
     return 1.0
   
-def eth_nft_score(balance: int) -> (float):
+
+def linkedin_email_score(verified) -> float:
+  if verified == True:
+    return 1.0
+  else:
+    return 0
+  
+def eth_nft_score(balance: int) -> float:
   if balance >= 2:
     return 1.0
   elif balance == 1:
     return 0.5
   else:
     return 0.0
-
-
-def linkedin_email_score(verified) -> (float):
-  if verified == True:
-    return 1.0
-  else:
-    return 0
