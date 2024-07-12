@@ -20,6 +20,7 @@
 import bittensor as bt
 from typing import List
 import datetime
+import pydantic
 
 
 class ProfileSynapse(bt.Synapse):
@@ -60,9 +61,11 @@ class ProfileSynapse(bt.Synapse):
     created_at: int
     total_commits: int
     eth_balance: float
+    eth_nft_balance: int
     tao_balance: float
     tao_staked: int
     no_of_transactions: int
+    is_linkedin_email_verified: bool
     score: float
     class Config:
         """
@@ -128,6 +131,13 @@ class ProfileSynapse(bt.Synapse):
     #     allow_mutation=False,
     # )
 
+    # eth_nft_balance: int = pydantic.Field(
+    #     ...,
+    #     title="eth_nft_balance",
+    #     description="A count of all nfts held by the user",
+    #     allow_mutation=False,
+    # )
+
     # tao_balance: float = pydantic.Field(
     #     ...,
     #     title="tao_balance",
@@ -149,7 +159,11 @@ class ProfileSynapse(bt.Synapse):
     #     allow_mutation=False,
     # )
 
-
+    # is_linkedin_email_verified: bool = pydantic.Field(
+    #     "",
+    #     title="is_linkedin_email_verified",
+    #     description="A bool that returns true if the linkedin email is verifed"
+    # )
 
     # score: float = pydantic.Field(
     #     "",
@@ -165,7 +179,7 @@ class ProfileSynapse(bt.Synapse):
         Returns:
             str: A string representation of the ProfileSynapse object.
         """
-        return f"ProfileSynapse(id={self.id}, public_repos={self.public_repos}, created_at={self.created_at}, total_commits={self.total_commits}, eth_balance={self.eth_balance}, tao_balance={self.tao_balance}, tao_staked={self.tao_staked}, no_of_transactions={self.no_of_transactions}, score={self.score})"
+        return f"ProfileSynapse(id={self.id}, public_repos={self.public_repos}, created_at={self.created_at}, total_commits={self.total_commits}, eth_balance={self.eth_balance}, eth_nft_balance={self.eth_nft_balance}, tao_balance={self.tao_balance}, tao_staked={self.tao_staked}, no_of_transactions={self.no_of_transactions}, is_linkedin_email_verified={self.is_linkedin_email_verified}, score={self.score})"
 
     def to_dict(self):
         return {
@@ -174,9 +188,11 @@ class ProfileSynapse(bt.Synapse):
             "created_at": self.created_at,
             "total_commits": self.total_commits,
             "eth_balance": self.eth_balance,
+            "eth_NFT_balance": self.eth_nft_balance,
             "tao_balance": self.tao_balance,
             "tao_staked": self.tao_staked,
             "no_of_transactions": self.no_of_transactions,
+            "is_linkedin_email_verified": self.is_linkedin_email_verified,
             "score": self.score,
         }
 

@@ -39,12 +39,14 @@ def get_random_data() -> ProfileSynapse:
     _created_at = int(_created_at_datetime.timestamp())
     _total_commits = random.randint(0,1000)
     _eth_balance = (random.randint(1,1000)/1000)
+    _eth_nft_balance = random.randint(0,10)
     _tao_balance = (random.randint(1,1000)/100)
     _tao_staked = (random.randint(1,int(_tao_balance)))
     _no_of_transactions = random.randint(0,5)
+    _is_linkedin_email_verified = bool(random.randint(1,10)%2)
     _score = 0
     bt.logging.debug(f"Score = {_score}")
-    _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked)
+    _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.eth_nft_score(_eth_nft_balance)+ scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked) + scoring.linkedin_email_score(_is_linkedin_email_verified)
     bt.logging.debug(f"Score = {_score}")
     _id = str(uuid.uuid4())
     
@@ -55,9 +57,11 @@ def get_random_data() -> ProfileSynapse:
         created_at = _created_at,
         total_commits = _total_commits,
         eth_balance = _eth_balance,
+        eth_nft_balance=_eth_nft_balance,
         tao_balance = _tao_balance,
         tao_staked = _tao_staked,
         no_of_transactions = _no_of_transactions,
+        is_linkedin_email_verified = _is_linkedin_email_verified,
         score = _score
     )
 
