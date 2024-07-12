@@ -163,7 +163,8 @@ class ProfileSynapse(bt.Synapse):
     is_linkedin_email_verified: bool = pydantic.Field(
         "",
         title="is_linkedin_email_verified",
-        description="A bool that returns true if the linkedin email is verifed"
+        description="A bool that returns true if the linkedin email is verifed",
+        allow_mutation=False,
     )
 
     score: float = pydantic.Field(
