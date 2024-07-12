@@ -27,7 +27,7 @@ from tabulate import tabulate
 from CID.protocol import ProfileSynapse
 from CID.validator.reward import get_rewards
 from CID.utils.uids import get_random_uids
-from protocol import ProfileSynapse
+from CID.protocol import ProfileSynapse
 from datetime import datetime,time
 
 fake = Faker()
@@ -123,9 +123,13 @@ async def forward(self):
         deserialize=True,
     )
 
-    is_correct_answer = get_rewards(
+    miner_rewards = get_rewards(
         self, ground_truth, responses
     )
+
+    bt.logging.debug("Miner Rewards")
+    bt.logging.debug(miner_rewards)
+
     printRecords = [
         [
             "UID",
@@ -144,7 +148,7 @@ async def forward(self):
                     response.axon.status_code if response.axon.status_code else "408"
                 ),  # Status Code of the response
                 response.score,  # Selected Answer
-                f"{is_correct_answer[i]}",  # is answer correct
+                f"{miner_rewards[i]}",  # is answer correct
             ]
         )
 
@@ -157,4 +161,4 @@ async def forward(self):
     )
     # Update the scores based on the rewards. You may want to define your own update_scores function for custom behavior.
 
-    self.update_scores(is_correct_answer, miner_uids)
+    self.update_scores(miner_rewards, miner_uids)

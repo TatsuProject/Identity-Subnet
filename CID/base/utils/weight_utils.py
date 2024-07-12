@@ -101,7 +101,6 @@ def convert_weights_and_uids_for_emit(
         bittensor.logging.debug("nothing to set on chain")
         return [], []  # Nothing to set on chain.
     else:
-        bittensor.debug("in else of reward")
         max_weight = float(np.max(weights))
         weights = [
             float(value) / max_weight for value in weights
@@ -183,8 +182,7 @@ def process_weights_for_netuid(
     bittensor.logging.debug("non_zero_weights", non_zero_weights)
 
     # Compute the exclude quantile and find the weights in the lowest quantile
-    bittensor.logging.debug("tester")
-    max_exclude = max(0, (non_zero_weights - min_allowed_weights) / 
+    max_exclude = max(0, len(non_zero_weights) - min_allowed_weights) / len(
         non_zero_weights
     )
     exclude_quantile = min([quantile, max_exclude])

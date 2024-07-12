@@ -2,7 +2,7 @@ import argparse
 import asyncio
 import bittensor as bt
 
-from protocol import StreamPrompting
+from CID.protocol import StreamPrompting
 
 """
 This has assumed you have:
