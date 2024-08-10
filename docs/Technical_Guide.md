@@ -34,7 +34,7 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     cd Identity-Subnet
     ```
-
+    ![Screenshot 1](../assets/td1.jpg)
 2. **Install Dependencies:** 
 
     Ensure you have pip installed, then install the necessary Python packages:
@@ -42,7 +42,7 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     pip install -r requirements.txt
     ```
-
+    ![Screenshot 2](../assets/td2.jpg)
 3. **Generate Wallet Keys:**
 
     To participate as a miner, you need to set up wallet keys. You can specify the name you want for the wallet:
@@ -50,13 +50,13 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     btcli wallet new_coldkey --wallet.name "NAME"
     ```
-
+    ![Screenshot 3](../assets/td3.jpg)
     This will generate a new wallet and return the coldkey for that wallet. Remember to keep this key secure. Now create a hotkey for the wallet you just created:
 
     ```bash
     btcli wallet new_hotkey --wallet.name "NAME" --wallet.hotkey default
     ```
-
+    ![Screenshot 4](../assets/td4.jpg)
     This command will generate a hotkey and coldkey for your miner wallet. Securely store the generated keys. And use any faucet to get Tao in your wallet.
 
 4. **Register Keys**
@@ -68,34 +68,17 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     btcli subnet register --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default
     ```
+    ![Screenshot 5](../assets/td5.jpg)
 
-    Follow the below prompts:
-
-    ```
-    >> Enter netuid [1] (1): # Enter netuid 1 to specify the subnet you just created.
-    >> Continue Registration?
-    hotkey: ...
-    coldkey: ...
-    network: finney [y/n]: # Select yes (y)
-    >> ✅ Registered
-    ```
-
+    ## OR
     Register your validator key to the subnet:
 
     ```bash
     btcli subnet register --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default
     ```
-
+    ![Screenshot 6](../assets/td5.jpg)
     Follow the prompts:
 
-    ```
-    >> Enter netuid [1] (1): # Enter netuid 1 to specify the subnet you just created.
-    >> Continue Registration?
-    hotkey: ...
-    coldkey: ...
-    network: finney [y/n]: # Select yes (y)
-    >> ✅ Registered
-    ```
 
 5. **Run the Process:**
 
@@ -104,7 +87,7 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     python neurons/miner.py --netuid 192 --subtensor.network test --wallet.name "NAME" --wallet.hotkey default --logging.debug
     ```
-
+    ![Screenshot 7](../assets/td7.jpg)
     OR
 
     Use the following command to start the Validator:
@@ -112,7 +95,7 @@ To run a miner on the Ta𝜏su Identity Subnet using the instructions provided i
     ```bash
     python neurons/validator.py --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default --logging.debug
     ```
-
+    ![Screenshot 8](../assets/td8.jpg)
 6. **Monitor and Verify:**
 
     - Monitor the console output to ensure the miner/validator is running correctly.
