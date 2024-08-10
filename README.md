@@ -72,6 +72,9 @@ To run the project, use the following commands (assuming that you have done the 
 
 For detailed usage instructions and examples, refer to the [documentation](docs/).
 
+## Technical Guide
+
+You can find the detailed Technical Guide in the docs folder, refer to [Technical_Guide](docs/Technical_Guide.md)
 
 ## License
 
