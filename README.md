@@ -45,7 +45,7 @@ To set up the Identity Subnet project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Identity-Subnet.git
+   git clone https://github.com/TatsuProject/Identity-Subnet.git
    cd Identity-Subnet
    ```
 
