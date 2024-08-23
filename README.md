@@ -2,7 +2,7 @@
 # Identity Subnet
 
 The Identity Subnet project aims to calculate a human score based on various metrics such as GitHub account, Ethereum balance, Tao balance, Tao staked, and other relevant data points. The project involves validators and miners working together to compute and verify these scores.
-Update: We are live on Testnet SN#192. For testing purposes, miners and validators can be connected to the subnet on SN192
+Update: We are live on Mainnet SN#38. Miners and validators can be connected to the subnet on SN38
 
 ## Table of Contents
 
