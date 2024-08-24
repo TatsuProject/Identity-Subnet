@@ -42,7 +42,7 @@ Install the Bittensor subnet template package:
 
 ```bash
 python -m pip install -e .
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## 2. Create wallets 
