@@ -1,5 +1,5 @@
 
-# Identity Subnet
+# Tstsu Identity SN#39
 
 The Identity Subnet project aims to calculate a human score based on various metrics such as GitHub account, Ethereum balance, Tao balance, Tao staked, and other relevant data points. The project involves validators and miners working together to compute and verify these scores.
 Update: We are live on Mainnet SN#38. Miners and validators can be connected to the subnet on SN38
@@ -41,7 +41,7 @@ The system consists of two main components:
 
 ## Installation
 
-To set up the Identity Subnet project, follow these steps:
+To set up the Tatsu Identity Subnet project, follow these steps:
 
 1. Clone the repository:
    ```bash
@@ -62,12 +62,12 @@ To run the project, use the following commands (assuming that you have done the 
 
 1. Start the validator:
    ```bash
-   python neurons/validator.py --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug
+   python neurons/validator.py --netuid 38 --subtensor.network finny --wallet.name miner --wallet.hotkey default --logging.debug
    ```
 
 2. Start the miner:
    ```bash
-   python neurons/miner.py --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug
+   python neurons/miner.py --netuid 38 --subtensor.network finny --wallet.name miner --wallet.hotkey default --logging.debug
    ```
 
 For detailed usage instructions and examples, refer to the [documentation](docs/).
