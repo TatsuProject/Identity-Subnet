@@ -62,7 +62,7 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
 
 4. **Register Keys**
 
-    This step registers your subnet validator or subnet miner keys to the subnet.
+    This step registers your subnet validator or subnet miner keys to the subnet. Depending on what you are planning to do, you can choose either of these four commands
 
     Register your miner key to the subnet on **TESTNET**:
 
@@ -72,6 +72,8 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ![Screenshot 5](../assets/td5.jpg)
 
     Register your miner key to the subnet on **MAINNET**:
+
+   ## OR
 
     ```bash
     btcli subnet register --netuid 38 --subtensor.network finny --wallet.name miner --wallet.hotkey default
@@ -87,6 +89,8 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ![Screenshot 6](../assets/td5.jpg)
     Follow the prompts:
 
+    ## OR
+   
     Register your validator key to the subnet on **MAINNET**:
 
     ```bash
@@ -106,7 +110,8 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     python neurons/miner.py --netuid 192 --subtensor.network test --wallet.name "NAME" --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 7](../assets/td7.jpg)
-    OR
+
+    ## OR
 
     Use the following command to start the Validator on **TESTNET**:
 
@@ -115,6 +120,7 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
+    ## OR
 
    Use the following command to start the miner on **MAINNET**:
 
@@ -122,7 +128,7 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     python neurons/miner.py --netuid 38 --subtensor.network finny --wallet.name "NAME" --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 7](../assets/td7.jpg)
-    OR
+    ## OR
 
     Use the following command to start the Validator on **MAINNET**:
 
@@ -131,7 +137,7 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
-7. **Monitor and Verify:**
+8. **Monitor and Verify:**
 
     - Monitor the console output to ensure the miner/validator is running correctly.
     - The logging information should help you verify that the miner is correctly processing data and communicating with the network.
