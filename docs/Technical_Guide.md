@@ -83,9 +83,9 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
 
 5. **Run the Process:**
 
-## For Testnet:
 
-    Use the following command to start the miner:
+
+    Use the following command to start the miner on **TESTNET**:
 
     ```bash
     python neurons/miner.py --netuid 192 --subtensor.network test --wallet.name "NAME" --wallet.hotkey default --logging.debug
@@ -93,15 +93,15 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ![Screenshot 7](../assets/td7.jpg)
     OR
 
-    Use the following command to start the Validator:
+    Use the following command to start the Validator on **TESTNET**:
 
     ```bash
     python neurons/validator.py --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
-##For Mainnet
-        Use the following command to start the miner:
+
+   Use the following command to start the miner on **MAINNET**:
 
     ```bash
     python neurons/miner.py --netuid 38 --subtensor.network finny --wallet.name "NAME" --wallet.hotkey default --logging.debug
@@ -109,14 +109,14 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ![Screenshot 7](../assets/td7.jpg)
     OR
 
-    Use the following command to start the Validator:
+    Use the following command to start the Validator on **MAINNET**:
 
     ```bash
     python neurons/validator.py --netuid 38 --subtensor.network finny --wallet.name validator --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
-6. **Monitor and Verify:**
+7. **Monitor and Verify:**
 
     - Monitor the console output to ensure the miner/validator is running correctly.
     - The logging information should help you verify that the miner is correctly processing data and communicating with the network.
