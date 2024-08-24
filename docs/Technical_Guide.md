@@ -64,15 +64,22 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
 
     This step registers your subnet validator or subnet miner keys to the subnet.
 
-    Register your miner key to the subnet:
+    Register your miner key to the subnet on **TESTNET**:
 
     ```bash
     btcli subnet register --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default
     ```
     ![Screenshot 5](../assets/td5.jpg)
 
+    Register your miner key to the subnet on **MAINNET**:
+
+    ```bash
+    btcli subnet register --netuid 38 --subtensor.network finny --wallet.name miner --wallet.hotkey default
+    ```
+    ![Screenshot 5](../assets/td5.jpg)
+
     ## OR
-    Register your validator key to the subnet:
+    Register your validator key to the subnet on **TESTNET**:
 
     ```bash
     btcli subnet register --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default
@@ -80,8 +87,16 @@ To run a miner/validator on the Tatsu Identity Subnet on the mainnet, you can us
     ![Screenshot 6](../assets/td5.jpg)
     Follow the prompts:
 
+    Register your validator key to the subnet on **MAINNET**:
 
-5. **Run the Process:**
+    ```bash
+    btcli subnet register --netuid 38 --subtensor.network finny --wallet.name validator --wallet.hotkey default
+    ```
+    ![Screenshot 6](../assets/td5.jpg)
+    Follow the prompts:
+
+
+6. **Run the Process:**
 
 
 
