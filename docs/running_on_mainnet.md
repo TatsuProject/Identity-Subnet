@@ -22,7 +22,7 @@ After installing `bittensor`, proceed as below:
 
 ## Steps
 
-## 1. Install your subnet template
+## 1. Install Tatsu Identity subnet template
 
 **NOTE: Skip this step if** you already did this during local testing and development.
 
