@@ -83,7 +83,7 @@ This step registers your subnet validator and/or subnet miner keys to the subnet
 Register your key to the subnet:
 
 ```bash
-btcli subnet recycle_register --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default
+btcli subnet register --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default
 ```
 
 Follow the below prompts:
