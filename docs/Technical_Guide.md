@@ -41,6 +41,7 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
     Ensure you have pip installed, then install the necessary Python packages:
 
     ```bash
+    pip install -e .
     pip install -r requirements.txt
     ```
     ![Screenshot 2](../assets/td2.jpg)
@@ -107,7 +108,7 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
     Use the following command to start the miner on **TESTNET**:
 
     ```bash
-    python neurons/miner.py --netuid 192 --subtensor.network test --wallet.name "NAME" --wallet.hotkey default --logging.debug
+    python3 neurons/miner.py --netuid 192 --subtensor.network test --wallet.name "NAME" --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 7](../assets/td7.jpg)
 
@@ -116,7 +117,7 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
     Use the following command to start the Validator on **TESTNET**:
 
     ```bash
-    python neurons/validator.py --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default --logging.debug
+    python3 neurons/validator.py --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default --logging.debug
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
