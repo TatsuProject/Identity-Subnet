@@ -54,7 +54,6 @@ To set up the Tatsu Identity Subnet project, follow these steps:
    ```bash
    pip install -r requirements.txt
    pip install -e .
-   pip install tabulate
    ```
 
 
@@ -64,12 +63,12 @@ To run the project, use the following commands (assuming that you have done the 
 
 1. Start the validator:
    ```bash
-   python neurons/validator.py --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default --logging.debug
+   python3 neurons/validator.py --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default --logging.debug
    ```
 
 2. Start the miner:
    ```bash
-   python neurons/miner.py --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default --logging.debug
+   python3 neurons/miner.py --netuid 38 --subtensor.network finney --wallet.name miner --wallet.hotkey default --logging.debug
    ```
 
 For detailed usage instructions and examples, refer to the [documentation](docs/).
