@@ -121,7 +121,7 @@ miner    default  1      True   0.00000  0.00000  0.00000    0.00000    0.00000 
 Run the subnet miner:
 
 ```bash
-python neurons/miner.py --netuid 38  --wallet.name miner --wallet.hotkey default --logging.debug
+python3 neurons/miner.py --netuid 38  --wallet.name miner --wallet.hotkey default --logging.debug
 ```
 
 You will see the below terminal output:
@@ -135,7 +135,7 @@ You will see the below terminal output:
 Run the subnet validator:
 
 ```bash
-python neurons/validator.py --netuid 38  --wallet.name validator --wallet.hotkey default --logging.debug
+python3 neurons/validator.py --netuid 38  --wallet.name validator --wallet.hotkey default --logging.debug
 ```
 
 You will see the below terminal output:
