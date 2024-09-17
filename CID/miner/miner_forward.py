@@ -1,31 +1,66 @@
 import bittensor as bt
 from CID.protocol import ProfileSynapse
-import scoring
-
-
+from CID.validator import scoring
 
 async def miner_forward(self, synapse: ProfileSynapse) -> ProfileSynapse:
     """
-    Processes the incoming 'ProfileSynapse' synapse by performing a predefined operation on the input data.
+    Processes the incoming 'ProfileSynapse' synapse by calculating a score based on various user attributes.
 
     Args:
-        synapse (CID.protocol.ProfileSynapse): The synapse object containing the task data.
+        synapse (CID.protocol.ProfileSynapse): The synapse object containing the user data.
 
     Returns:
-        CID.protocol.ProfileSynapse: The synapse object with the 'answer' field set to the answer from miner.
+        CID.protocol.ProfileSynapse: The synapse object with the 'score' field set to the calculated score.
     """
-    #get data from synapse
-    _public_repos = synapse.public_repos
-    _created_at = synapse.created_at
-    _total_commits = synapse.total_commits
-    _eth_balance = synapse.eth_balance
-    _eth_nft_balance= synapse.eth_nft_balance
-    _tao_balance = synapse.tao_balance
-    _tao_staked = synapse.tao_staked
-    _no_of_transactions = synapse.no_of_transactions
-    _is_linkedin_email_verified = synapse.is_linkedin_email_verified
-    
-    #calculate score
-    _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.eth_nft_score(_eth_nft_balance) + scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked) + scoring.linkedin_email_score(_is_linkedin_email_verified)
-    synapse.score = _score
+    # Calculate GitHub-related scores
+    github_score = (
+        scoring.calculate_repo_points(synapse.public_repos) +
+        scoring.github_account_age_points(synapse.github_created_at) +
+        scoring.commit_points(synapse.total_commits)
+    )
+
+    # Calculate crypto-related scores
+    crypto_score = (
+        scoring.eth_crypto_score(synapse.eth_balance) +
+        scoring.tao_crypto_score(synapse.tao_balance) +
+        scoring.eth_transaction_score(synapse.eth_transactions) +
+        scoring.tao_transaction_score(synapse.tao_transactions)
+    )
+
+    # Calculate social media-related scores
+    social_score = (
+        scoring.x_follower_points(synapse.x_followers) +
+        scoring.insta_follower_points(synapse.insta_followers) +
+        scoring.tiktok_follower_points(synapse.tiktok_followers) +
+        scoring.fb_follower_points(synapse.fb_followers) +
+        scoring.reddit_post_karma(synapse.reddit_post_karma) +
+        scoring.reddit_comment_karma(synapse.reddit_comment_karma)
+    )
+
+    # Calculate account age scores
+    age_score = (
+        scoring.x_account_age_points(synapse.x_created_at) +
+        scoring.reddit_account_age_points(synapse.reddit_created_at) +
+        scoring.insta_account_age_points(synapse.insta_created_at) +
+        scoring.linkedin_account_age_points(synapse.linkedin_created_at)
+    )
+
+    # Calculate email verification scores
+    email_score = (
+        scoring.linkedin_email_score(synapse.is_linkedin_email_verified) +
+        scoring.reddit_email_score(synapse.is_reddit_email_verified) +
+        scoring.x_email_score(synapse.is_x_email_verified) +
+        scoring.insta_email_score(synapse.is_insta_email_verified) +
+        scoring.tiktok_email_score(synapse.is_tiktok_email_verified)
+    )
+
+    # Calculate total score
+    total_score = github_score + crypto_score + social_score + age_score + email_score
+
+    # Normalize the score (assuming max possible score is 25)
+    normalized_score = total_score / 25
+
+    # Set the calculated score in the synapse object
+    synapse.score = normalized_score
+
     return synapse

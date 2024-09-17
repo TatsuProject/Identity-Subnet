@@ -28,42 +28,62 @@ from CID.protocol import ProfileSynapse
 from CID.validator.reward import get_rewards
 from CID.utils.uids import get_random_uids
 from CID.protocol import ProfileSynapse
-from datetime import datetime,time
+from datetime import datetime, time
 from time import sleep
 
 fake = Faker()
 
 def get_random_data() -> ProfileSynapse:
-    _public_repos = random.randint(0,1000)
-    _created_at = fake.date_between(start_date='-6y', end_date='today')
-    _created_at_datetime = datetime.combine(_created_at, time())
-    _created_at = int(_created_at_datetime.timestamp())
-    _total_commits = random.randint(0,1000)
-    _eth_balance = (random.randint(1,1000)/1000)
-    _eth_nft_balance = random.randint(0,10)
-    _tao_balance = (random.randint(1,1000)/100)
-    _tao_staked = (random.randint(1,int(_tao_balance)))
-    _no_of_transactions = random.randint(0,5)
-    _is_linkedin_email_verified = bool(random.randint(1,10)%2)
-    _score = 0
-    bt.logging.debug(f"Score = {_score}")
-    _score = scoring.calculate_repo_points(_public_repos) + scoring.calculate_account_age_points(_created_at) + scoring.commit_points(_total_commits) + scoring.crypto_score(_eth_balance) + scoring.eth_nft_score(_eth_nft_balance)+ scoring.crypto_score(_tao_balance) + scoring.transaction_score(_no_of_transactions) + scoring.staked_score(_tao_staked) + scoring.linkedin_email_score(_is_linkedin_email_verified)
-    bt.logging.debug(f"Score = {_score}")
     _id = str(uuid.uuid4())
+    _public_repos = random.randint(0, 1000)
+    _github_created_at = int(fake.date_time_between(start_date='-6y', end_date='now').timestamp())
+    _total_commits = random.randint(0, 10000)
+    _eth_balance = random.uniform(0, 10)
+    _tao_balance = random.uniform(0, 1000)
+    _eth_transactions = random.randint(0, 100)
+    _tao_transactions = random.randint(0, 100)
+    _x_followers = random.randint(0, 10000)
+    _insta_followers = random.randint(0, 10000)
+    _tiktok_followers = random.randint(0, 10000)
+    _fb_followers = random.randint(0, 5000)
+    _reddit_post_karma = random.randint(0, 50000)
+    _reddit_comment_karma = random.randint(0, 50000)
+    _x_created_at = int(fake.date_time_between(start_date='-10y', end_date='now').timestamp())
+    _reddit_created_at = int(fake.date_time_between(start_date='-15y', end_date='now').timestamp())
+    _insta_created_at = int(fake.date_time_between(start_date='-10y', end_date='now').timestamp())
+    _linkedin_created_at = int(fake.date_time_between(start_date='-15y', end_date='now').timestamp())
+    _is_linkedin_email_verified = random.choice([True, False])
+    _is_reddit_email_verified = random.choice([True, False])
+    _is_x_email_verified = random.choice([True, False])
+    _is_insta_email_verified = random.choice([True, False])
+    _is_tiktok_email_verified = random.choice([True, False])
     
     return ProfileSynapse(
-        id = _id,
-        type = "generated",
-        public_repos = _public_repos,
-        created_at = _created_at,
-        total_commits = _total_commits,
-        eth_balance = _eth_balance,
-        eth_nft_balance=_eth_nft_balance,
-        tao_balance = _tao_balance,
-        tao_staked = _tao_staked,
-        no_of_transactions = _no_of_transactions,
-        is_linkedin_email_verified = _is_linkedin_email_verified,
-        score = _score
+        id=_id,
+        type="generated",
+        public_repos=_public_repos,
+        github_created_at=_github_created_at,
+        total_commits=_total_commits,
+        eth_balance=_eth_balance,
+        tao_balance=_tao_balance,
+        eth_transactions=_eth_transactions,
+        tao_transactions=_tao_transactions,
+        x_followers=_x_followers,
+        insta_followers=_insta_followers,
+        tiktok_followers=_tiktok_followers,
+        fb_followers=_fb_followers,
+        reddit_post_karma=_reddit_post_karma,
+        reddit_comment_karma=_reddit_comment_karma,
+        x_created_at=_x_created_at,
+        reddit_created_at=_reddit_created_at,
+        insta_created_at=_insta_created_at,
+        linkedin_created_at=_linkedin_created_at,
+        is_linkedin_email_verified=_is_linkedin_email_verified,
+        is_reddit_email_verified=_is_reddit_email_verified,
+        is_x_email_verified=_is_x_email_verified,
+        is_insta_email_verified=_is_insta_email_verified,
+        is_tiktok_email_verified=_is_tiktok_email_verified,
+        score=0  # The score will be calculated by the miner
     )
 
 def generate_task() -> Tuple[ProfileSynapse, str]:
@@ -137,7 +157,8 @@ async def forward(self):
             "IP:Port",
             "Status Code",
             "Profile Score",
-            "Is miner correct?",
+            "Ground Truth",
+            "Reward",
         ]
     ]
     for i, response in enumerate(responses):
@@ -148,8 +169,9 @@ async def forward(self):
                 (
                     response.axon.status_code if response.axon.status_code else "408"
                 ),  # Status Code of the response
-                response.score,  # Selected Answer
-                f"{miner_rewards[i]}",  # is answer correct
+                response.score,  # Calculated Score
+                ground_truth,  # Ground Truth Score
+                f"{miner_rewards[i]}",  # Reward
             ]
         )
 
