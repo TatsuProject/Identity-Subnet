@@ -57,8 +57,8 @@ async def miner_forward(self, synapse: ProfileSynapse) -> ProfileSynapse:
     # Calculate total score
     total_score = github_score + crypto_score + social_score + age_score + email_score
 
-    # Normalize the score (assuming max possible score is 25)
-    normalized_score = total_score / 25
+    # Normalize the score (assuming max possible score is 22)
+    normalized_score = total_score / 22
 
     # Set the calculated score in the synapse object
     synapse.score = normalized_score
