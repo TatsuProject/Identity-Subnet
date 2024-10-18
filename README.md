@@ -1,9 +1,9 @@
 
-# Taτsu Identity SN192
+# Taτsu Identity SN36
 
 The Taτsu Identity Subnet aims to calculate a human score based on various metrics such as GitHub account, TAO balance, Social Media and other relevant data points. The project involves validators and miners working together to compute and verify these scores.
 
-Update: We are live on Testnet as SN192.
+Update: We are live on mainnet as SN36.
 
 ## Table of Contents
 
@@ -63,12 +63,12 @@ To run the project, use the following commands (assuming that you have done the 
 
 1. Start the validator:
    ```bash
-   python3 neurons/validator.py --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug
+   python3 neurons/validator.py --netuid 36 --subtensor.network finney --wallet.name validator --wallet.hotkey default --logging.debug
    ```
 
 2. Start the miner:
    ```bash
-   python3 neurons/miner.py --netuid 192 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug
+   python3 neurons/miner.py --netuid 36 --subtensor.network finney --wallet.name miner --wallet.hotkey default --logging.debug
    ```
 
 For detailed usage instructions and examples, refer to the [documentation](docs/).
