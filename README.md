@@ -1,5 +1,5 @@
 
-# Taτsu Identity SN36
+# Tatsu Identity 2.0 - SN36
 
 The Taτsu Identity Subnet aims to calculate a human score based on various metrics such as GitHub account, TAO balance, Social Media and other relevant data points. The project involves validators and miners working together to compute and verify these scores.
 
