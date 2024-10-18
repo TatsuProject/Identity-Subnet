@@ -74,6 +74,13 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
 
     Register your miner key to the subnet on **MAINNET**:
 
+   ## OR
+
+    ```bash
+    btcli subnet register --netuid 36 --subtensor.network finney --wallet.name miner --wallet.hotkey default
+    ```
+    ![Screenshot 5](../assets/td5.jpg)
+
     ## OR
     Register your validator key to the subnet on **TESTNET**:
 
@@ -81,7 +88,17 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
     btcli subnet register --netuid 192 --subtensor.network test --wallet.name validator --wallet.hotkey default
     ```
     ![Screenshot 6](../assets/td5.jpg)
+    Follow the prompts:
 
+    ## OR
+   
+    Register your validator key to the subnet on **MAINNET**:
+
+    ```bash
+    btcli subnet register --netuid 36 --subtensor.network finney --wallet.name validator --wallet.hotkey default
+    ```
+    ![Screenshot 6](../assets/td5.jpg)
+    Follow the prompts:
 
 
 6. **Run the Process:**
@@ -104,6 +121,22 @@ To run a miner/validator on the Ta𝜏su Identity Subnet on the mainnet, you can
     ```
     ![Screenshot 8](../assets/td8.jpg)
 
+    ## OR
+
+   Use the following command to start the miner on **MAINNET**:
+
+    ```bash
+    python neurons/miner.py --netuid 36 --subtensor.network finney --wallet.name "NAME" --wallet.hotkey default --logging.debug
+    ```
+    ![Screenshot 7](../assets/td7.jpg)
+    ## OR
+
+    Use the following command to start the Validator on **MAINNET**:
+
+    ```bash
+    python neurons/validator.py --netuid 36 --subtensor.network finney --wallet.name validator --wallet.hotkey default --logging.debug
+    ```
+    ![Screenshot 8](../assets/td8.jpg)
 
 8. **Monitor and Verify:**
 
